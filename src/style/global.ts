@@ -13,6 +13,10 @@ const GlobalStyles = createGlobalStyle`
     font-weight: ${({ theme }) => theme.font.weight.regular}
   }
 
+  html, body, #root {
+    height: 100%;
+  }
+
   `;
 
 export default GlobalStyles;
