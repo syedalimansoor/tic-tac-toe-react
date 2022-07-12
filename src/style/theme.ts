@@ -29,6 +29,9 @@ const theme = {
       mobile: "18px",
     },
   },
+  breakpoints: {
+    medium: "768px",
+  },
 };
 
 export default theme;
