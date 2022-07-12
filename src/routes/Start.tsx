@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import Attribution from "$/components/start/Attribution";
 
 import oDesktop from "$/assets/o-desktop-orange.svg";
 import xDesktop from "$/assets/x-desktop-orange.svg";
@@ -17,6 +18,7 @@ const Container = styled.div`
   /* background-position: top calc(-100px + 10vw) left calc(-100px + 10vw),
     top calc(-100px + 10vw) right calc(-100px + 10vw); */
   background-position: top -50px left -50px, top -50px right -50px;
+  padding-block: 3rem;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.medium}) {
     background-image: url(${xDesktop}), url(${oDesktop});
@@ -25,5 +27,9 @@ const Container = styled.div`
 `;
 
 export default function Start() {
-  return <Container>Hello</Container>;
+  return (
+    <Container>
+      <Attribution />
+    </Container>
+  );
 }
