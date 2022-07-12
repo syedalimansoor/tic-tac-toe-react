@@ -1,5 +1,10 @@
 {
   "name": "tic-tac-toe-react",
+  "author": {
+    "name": "Syed Ali Mansoor",
+    "email": "alimansoor4812@gmail.com",
+    "url": "https://instagram.com/alimansoor.dev"
+  },
   "private": true,
   "version": "0.0.0",
   "scripts": {
