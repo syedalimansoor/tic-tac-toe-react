@@ -6,7 +6,7 @@ const GlobalStyles = createGlobalStyle`
     padding: 0;
   }
   
-  ::root {
+  :root {
     font-family: ${({ theme }) => theme.font.family};
     font-size: ${({ theme }) => theme.font.size.mobile};
     font-weight: ${({ theme }) => theme.font.weight.regular}
