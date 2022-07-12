@@ -7,6 +7,7 @@ const GlobalStyles = createGlobalStyle`
   }
   
   :root {
+    color: ${({ theme }) => theme.colors.orange[100]};
     font-family: ${({ theme }) => theme.font.family};
     font-size: ${({ theme }) => theme.font.size.mobile};
     font-weight: ${({ theme }) => theme.font.weight.regular}
