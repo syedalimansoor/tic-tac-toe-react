@@ -18,6 +18,20 @@ const GlobalStyles = createGlobalStyle`
     height: 100%;
   }
 
+  body {
+    background-color: ${({ theme }) => theme.colors.blue[200]}
+  }
+
+  #root {
+    display: grid;
+    place-content: stretch;
+    grid-template-areas: "stack";
+
+    & > * {
+      grid-area: stack;
+    }
+  }
+
   img {
     max-width: 100%;
   }

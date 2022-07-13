@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { motion } from "framer-motion";
+import pageTransition from "$/utils/pageTransition";
 
 import oDesktop from "$/assets/o-desktop-orange.svg";
 import xDesktop from "$/assets/x-desktop-orange.svg";
@@ -9,9 +11,8 @@ import xMobile from "$/assets/x-mobile-orange.svg";
 import Attribution from "$/components/start/Attribution";
 import StartButton from "$/components/start/StartButton";
 
-const Container = styled.div`
+const Container = styled(motion.div)`
   height: 100%;
-  background-color: ${({ theme }) => theme.colors.blue[200]};
   display: grid;
   place-items: center;
   grid-template-rows: 1fr auto 1fr;
@@ -30,7 +31,7 @@ const Container = styled.div`
 
 export default function Start() {
   return (
-    <Container>
+    <Container {...pageTransition} key="start">
       <StartButton />
       <Attribution />
     </Container>
