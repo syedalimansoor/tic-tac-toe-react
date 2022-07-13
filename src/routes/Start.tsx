@@ -31,7 +31,7 @@ const Container = styled(motion.div)`
 
 export default function Start() {
   return (
-    <Container {...pageTransition} key="start">
+    <Container {...pageTransition}>
       <StartButton />
       <Attribution />
     </Container>
