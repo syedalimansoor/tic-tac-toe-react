@@ -1,17 +1,19 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import Attribution from "$/components/start/Attribution";
 
 import oDesktop from "$/assets/o-desktop-orange.svg";
 import xDesktop from "$/assets/x-desktop-orange.svg";
 import oMobile from "$/assets/o-mobile-orange.svg";
 import xMobile from "$/assets/x-mobile-orange.svg";
 
+import Attribution from "$/components/start/Attribution";
+import StartButton from "$/components/start/StartButton";
+
 const Container = styled.div`
   height: 100%;
   background-color: ${({ theme }) => theme.colors.blue[200]};
   display: grid;
-  place-content: center;
+  place-items: center;
   grid-template-rows: 1fr auto 1fr;
   background-image: url(${xMobile}), url(${oMobile});
   background-repeat: no-repeat;
@@ -29,6 +31,7 @@ const Container = styled.div`
 export default function Start() {
   return (
     <Container>
+      <StartButton />
       <Attribution />
     </Container>
   );
