@@ -13,3 +13,5 @@ const useStore = create<RootState>()(
     ...createGameModeSlice(...args),
   }))
 );
+
+export default useStore;
