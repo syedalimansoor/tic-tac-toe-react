@@ -6,11 +6,16 @@ const Text = styled(motion.p)`
   align-self: end;
   color: ${({ theme }) => theme.colors.orange[200]};
   font-weight: ${({ theme }) => theme.font.weight.medium};
+  transition: font-size 200ms ease;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.medium}) {
+    font-size: 1.5rem;
+  }
 `;
 
 const Link = styled.a`
   color: ${({ theme }) => theme.colors.orange[200]};
-  transition: 200ms ease;
+  transition: color 200ms ease;
 
   &:hover {
     color: ${({ theme }) => theme.colors.orange[100]};

@@ -26,6 +26,7 @@ const Container = styled(motion.div)`
   @media (min-width: ${({ theme }) => theme.breakpoints.medium}) {
     background-image: url(${xDesktop}), url(${oDesktop});
     background-position: top -200px left -200px, bottom -200px right -200px;
+    padding-block: 4rem;
   }
 `;
 
