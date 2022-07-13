@@ -18,6 +18,15 @@ const GlobalStyles = createGlobalStyle`
     height: 100%;
   }
 
+  img {
+    max-width: 100%;
+  }
+
+  input, button, textarea {
+    font: inherit;
+    appearance: none;
+  }
+
   `;
 
 export default GlobalStyles;
