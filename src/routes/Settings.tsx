@@ -9,6 +9,7 @@ import oDesktop from "$/assets/o-desktop-blue.svg";
 
 import Logo from "$/components/misc/Logo";
 import SettingsForm from "$/components/settings/SettingsForm";
+import PlayButton from "$/components/settings/PlayButton";
 
 const Container = styled(motion.div)`
   height: 100%;
@@ -34,6 +35,7 @@ export default function Settings() {
     <Container {...pageTransition}>
       <Logo />
       <SettingsForm />
+      <PlayButton />
     </Container>
   );
 }
