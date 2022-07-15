@@ -14,3 +14,9 @@ export const OptionsList = styled.div`
     flex: 1 0 0;
   }
 `;
+
+export const FieldsList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+`;
