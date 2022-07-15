@@ -1,10 +1,21 @@
 import { selectGameMode } from "$/features/gameMode";
+import { selectPlayers } from "$/features/players";
 import useStore from "$/store";
 import SelectOption from "./SelectOption";
 import { Label, OptionsList } from "./styled";
 
 export default function SelectGameMode() {
   const { gameMode, setGameMode } = useStore(selectGameMode);
+  const { setPlayerType } = useStore(selectPlayers);
+
+  const handlePvC = () => {
+    setGameMode("PvC");
+    setPlayerType("ai");
+  };
+  const handlePvP = () => {
+    setGameMode("PvP");
+    setPlayerType("human");
+  };
 
   return (
     <>
@@ -14,13 +25,13 @@ export default function SelectGameMode() {
           group="gameMode"
           value="PvC"
           checked={gameMode === "PvC"}
-          onChange={() => setGameMode("PvC")}
+          onChange={handlePvC}
         />
         <SelectOption
           group="gameMode"
           value="PvP"
           checked={gameMode === "PvP"}
-          onChange={() => setGameMode("PvP")}
+          onChange={handlePvP}
         />
       </OptionsList>
     </>
