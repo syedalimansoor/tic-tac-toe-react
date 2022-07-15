@@ -8,6 +8,7 @@ export const OptionsList = styled.div`
   display: flex;
   justify-content: stretch;
   gap: 0.8em;
+  margin-bottom: 0.8em;
 
   & > * {
     flex: 1 0 0;
