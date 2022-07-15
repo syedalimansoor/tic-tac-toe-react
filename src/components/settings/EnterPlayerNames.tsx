@@ -4,7 +4,7 @@ import PlayerNameField from "./PlayerNameField";
 import { FieldsList, Label } from "./styled";
 
 export default function EnterPlayerNames() {
-  const { players, setPlayerName } = useStore(selectPlayers);
+  const { players } = useStore(selectPlayers);
 
   return (
     <>
