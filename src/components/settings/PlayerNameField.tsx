@@ -13,6 +13,10 @@ const Label = styled.label`
   font-size: 0.8rem;
   font-weight: ${({ theme }) => theme.font.weight.medium};
   margin-bottom: 0.5em;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.medium}) {
+    font-size: 1rem;
+  }
 `;
 
 const Field = styled.input`
@@ -24,6 +28,10 @@ const Field = styled.input`
   padding: 0.5em;
   font-weight: ${({ theme }) => theme.font.weight.medium};
   outline: none;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.medium}) {
+    font-size: 1.2rem;
+  }
 `;
 
 export default function PlayerNameField(props: Props) {

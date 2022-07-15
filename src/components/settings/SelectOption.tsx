@@ -30,6 +30,10 @@ const Content = styled.span<{ checked: boolean }>`
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.3),
       0 0 5px ${({ theme }) => theme.colors.orange[300]};
   }
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.medium}) {
+    font-size: 1.2rem;
+  }
 `;
 
 const Radio = styled.input.attrs({ type: "radio" })``;

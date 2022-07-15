@@ -27,6 +27,11 @@ const Button = styled.button`
   }
 
   width: min(100%, 25em);
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.medium}) {
+    font-size: 1.2rem;
+    width: min(100%, 18em);
+  }
 `;
 
 export default function PlayButton() {

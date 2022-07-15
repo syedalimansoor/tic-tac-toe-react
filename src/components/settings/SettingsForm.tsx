@@ -14,6 +14,15 @@ const Form = styled.form`
   gap: 0.5em;
 
   width: min(100%, 25em);
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.medium}) {
+    grid-template-rows: repeat(3, auto);
+    grid-template-columns: auto 1fr;
+    gap: 2em;
+    align-items: center;
+    padding: 2em;
+    width: min(100%, 30em);
+  }
 `;
 
 export default function SettingsForm() {
