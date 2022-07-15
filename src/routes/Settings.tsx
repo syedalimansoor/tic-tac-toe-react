@@ -6,7 +6,9 @@ import xMobile from "$/assets/x-mobile-blue.svg";
 import xDesktop from "$/assets/x-desktop-blue.svg";
 import oMobile from "$/assets/o-mobile-blue.svg";
 import oDesktop from "$/assets/o-desktop-blue.svg";
+
 import Logo from "$/components/misc/Logo";
+import SettingsForm from "$/components/settings/SettingsForm";
 
 const Container = styled(motion.div)`
   height: 100%;
@@ -24,13 +26,14 @@ const Container = styled(motion.div)`
   flex-direction: column;
   justify-content: center;
   align-items: stretch;
-  gap: 2rem;
+  gap: 3rem;
 `;
 
 export default function Settings() {
   return (
     <Container {...pageTransition}>
       <Logo />
+      <SettingsForm />
     </Container>
   );
 }
