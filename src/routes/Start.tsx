@@ -16,6 +16,7 @@ const Container = styled(motion.div)`
   display: grid;
   place-items: center;
   grid-template-rows: 1fr auto 1fr;
+  gap: 2em;
   background-image: url(${xMobile}), url(${oMobile});
   background-repeat: no-repeat;
   background-position: top -50px left -50px, top -50px right -50px;
