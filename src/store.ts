@@ -1,4 +1,4 @@
-import create from "zustand/react";
+import create from "zustand";
 import createGameModeSlice, { GameModeSlice } from "./features/gameMode";
 import { devtools } from "zustand/middleware";
 import { StateCreatorWithMiddleware } from "./features";
