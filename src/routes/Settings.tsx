@@ -30,10 +30,16 @@ const Container = styled(motion.div)`
   gap: 3rem;
 `;
 
+const StyledLogo = styled(Logo)`
+  @media (min-width: ${({ theme }) => theme.breakpoints.medium}) {
+    font-size: 3rem;
+  }
+`;
+
 export default function Settings() {
   return (
     <Container {...pageTransition}>
-      <Logo />
+      <StyledLogo />
       <SettingsForm />
       <PlayButton />
     </Container>
