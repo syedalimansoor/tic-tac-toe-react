@@ -26,7 +26,7 @@ const Container = styled(motion.div)`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: stretch;
+  align-items: center;
   gap: 3rem;
 `;
 

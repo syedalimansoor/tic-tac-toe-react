@@ -12,6 +12,8 @@ const Form = styled.form`
 
   display: grid;
   gap: 0.5em;
+
+  width: min(100%, 25em);
 `;
 
 export default function SettingsForm() {

@@ -25,6 +25,8 @@ const Button = styled.button`
       0 8px 15px ${({ theme }) => theme.colors.orange[200]};
     transform: translateY(0);
   }
+
+  width: min(100%, 25em);
 `;
 
 export default function PlayButton() {
