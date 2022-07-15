@@ -1,3 +1,4 @@
+import { RootState } from "$/store";
 import { StateCreatorWithMiddleware } from ".";
 
 export type GameMode = "PvC" | "PvP";
@@ -15,3 +16,8 @@ const createGameModeSlice: StateCreatorWithMiddleware<GameModeSlice> = (
 });
 
 export default createGameModeSlice;
+
+export const selectGameMode = (store: RootState) => {
+  const { gameMode, setGameMode } = store;
+  return { gameMode, setGameMode };
+};
