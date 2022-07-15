@@ -41,7 +41,8 @@ const Button = styled.button`
     }
 
     &:active {
-      box-shadow: 0 0 15px 0 ${({ theme }) => theme.colors.orange[200]};
+      box-shadow: 0 0 0 0 ${({ theme }) => theme.colors.orange[200]},
+        0 0 15px 0 ${({ theme }) => theme.colors.orange[200]};
     }
   }
 `;
