@@ -25,6 +25,7 @@ const GlobalStyles = createGlobalStyle`
   #root {
     display: grid;
     place-content: stretch;
+    align-items: start;
     grid-template-areas: "stack";
 
     & > * {

@@ -12,7 +12,7 @@ import Attribution from "$/components/start/Attribution";
 import StartButton from "$/components/start/StartButton";
 
 const Container = styled(motion.div)`
-  height: 100%;
+  height: 100vh;
   display: grid;
   place-items: center;
   grid-template-rows: 1fr auto 1fr;
