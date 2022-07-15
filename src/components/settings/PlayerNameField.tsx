@@ -1,4 +1,12 @@
+import { Player, selectPlayers } from "$/features/players";
+import useStore from "$/store";
+import { ChangeEventHandler } from "react";
 import styled from "styled-components";
+
+interface Props {
+  player: Player;
+  number: number;
+}
 
 const Label = styled.label`
   display: block;
@@ -15,13 +23,26 @@ const Field = styled.input`
   width: 100%;
   padding: 0.5em;
   font-weight: ${({ theme }) => theme.font.weight.medium};
+  outline: none;
 `;
 
-export default function PlayerNameField() {
+export default function PlayerNameField(props: Props) {
+  const { setPlayerName } = useStore(selectPlayers);
+
+  const handleChange: ChangeEventHandler<HTMLInputElement> = (evt) =>
+    setPlayerName(props.player.id, evt.target.value);
+
   return (
     <div>
-      <Label>Player 1 - X</Label>
-      <Field />
+      <Label htmlFor={props.player.id}>
+        Player {props.number} - {props.player.mark}
+      </Label>
+      <Field
+        id={props.player.id}
+        onChange={handleChange}
+        value={props.player.name}
+        disabled={props.player.type === "ai"}
+      />
     </div>
   );
 }
