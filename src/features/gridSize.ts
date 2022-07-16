@@ -1,5 +1,5 @@
 import { RootState } from "$/store";
-import { StateCreatorWithMiddleware } from ".";
+import { StateCreatorWithMiddleware } from "$/utils/StateCreatorWithMiddleware";
 
 export type GridSize = 3 | 4 | 5;
 

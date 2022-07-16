@@ -1,6 +1,6 @@
 import create from "zustand";
 import { devtools } from "zustand/middleware";
-import { StateCreatorWithMiddleware } from "./features";
+import { StateCreatorWithMiddleware } from "./utils/StateCreatorWithMiddleware";
 import createGameModeSlice, { GameModeSlice } from "./features/gameMode";
 import createGridSizeSlice, { GridSizeSlice } from "./features/gridSize";
 import createPlayersSlice, { PlayersSlice } from "./features/players";

@@ -1,6 +1,6 @@
 import { RootState } from "$/store";
 import { v4 as uuid } from "uuid";
-import { StateCreatorWithMiddleware } from ".";
+import { StateCreatorWithMiddleware } from "$/utils/StateCreatorWithMiddleware";
 
 export type PlayerType = "human" | "ai";
 export type Mark = "X" | "O";
