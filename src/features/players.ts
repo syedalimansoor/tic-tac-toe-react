@@ -27,6 +27,7 @@ const createPlayersSlice: StateCreatorWithMiddleware<PlayersSlice> = (
     { id: uuid(), name: "", type: "human", mark: "X", score: 0 },
     { id: uuid(), name: "A.I.", type: "ai", mark: "O", score: 0 },
   ],
+
   setPlayerName(id, name) {
     const players = get().players;
     players.forEach((player) =>
@@ -34,6 +35,7 @@ const createPlayersSlice: StateCreatorWithMiddleware<PlayersSlice> = (
     );
     set({ players });
   },
+
   setPlayerType(type) {
     const players = get().players;
     players[1].type = type;
