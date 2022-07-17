@@ -20,7 +20,7 @@ const Container = styled.div`
   width: min(100%, 70em);
   display: grid;
   justify-items: center;
-  align-content: space-between;
+  align-items: center;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.medium}) {
     grid-template:
@@ -47,7 +47,7 @@ const PlayersContainer = styled.div`
 `;
 const Player1Display = styled(PlayerDisplay)`
   @media (min-width: ${({ theme }) => theme.breakpoints.medium}) {
-    justify-self: start;
+    justify-self: stretch;
     grid-area: player1;
   }
 `;
