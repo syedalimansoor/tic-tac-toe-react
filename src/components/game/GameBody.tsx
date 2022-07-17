@@ -8,6 +8,10 @@ const Wrapper = styled.main`
   padding: 1em;
   display: flex;
   justify-content: center;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.medium}) {
+    padding: 2em;
+  }
 `;
 const Container = styled.div`
   width: min(100%, 25em);
