@@ -39,7 +39,7 @@ const Content = styled.span<{ checked: boolean }>`
     font-size: 1.2rem;
   }
 
-  ${Radio}:focus-within ~ & {
+  ${Radio}:focus-visible ~ & {
     outline: 2px solid ${({ theme }) => theme.colors.orange[100]};
     outline-offset: 2px;
   }
