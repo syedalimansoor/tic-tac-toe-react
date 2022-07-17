@@ -21,6 +21,14 @@ const Container = styled.div`
   display: grid;
   justify-items: center;
   align-content: space-between;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.medium}) {
+    grid-template:
+      ". score ." auto
+      "player1 grid player2" auto
+      ". current ." auto / 1fr auto 1fr;
+    column-gap: 4em;
+  }
 `;
 
 const PlayersContainer = styled.div`
@@ -31,6 +39,22 @@ const PlayersContainer = styled.div`
   gap: 3em;
   & > * {
     flex: 1 0 0;
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.medium}) {
+    display: contents;
+  }
+`;
+const Player1Display = styled(PlayerDisplay)`
+  @media (min-width: ${({ theme }) => theme.breakpoints.medium}) {
+    justify-self: start;
+    grid-area: player1;
+  }
+`;
+const Player2Display = styled(PlayerDisplay)`
+  @media (min-width: ${({ theme }) => theme.breakpoints.medium}) {
+    justify-self: stretch;
+    grid-area: player2;
   }
 `;
 
@@ -43,8 +67,8 @@ export default function GameBody() {
         <Score />
         <Grid />
         <PlayersContainer>
-          <PlayerDisplay player={players[0]} />
-          <PlayerDisplay player={players[1]} />
+          <Player1Display player={players[0]} />
+          <Player2Display player={players[1]} />
         </PlayersContainer>
         <CurrentPlayer />
       </Container>

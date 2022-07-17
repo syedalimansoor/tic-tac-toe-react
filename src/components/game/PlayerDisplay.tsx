@@ -13,6 +13,7 @@ const background = {
 
 interface Props {
   player: Player;
+  className?: string;
 }
 
 const Display = styled.div<{ mark: Mark }>`
@@ -24,11 +25,16 @@ const Display = styled.div<{ mark: Mark }>`
   background-image: url(${({ mark }) => background.mobile[mark]});
   background-size: cover;
   background-repeat: no-repeat;
+  text-align: center;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.medium}) {
+    background-image: url(${({ mark }) => background.desktop[mark]});
+  }
 `;
 
 export default function PlayerDisplay(props: Props) {
   return (
-    <Display mark={props.player.mark}>
+    <Display mark={props.player.mark} className={props.className}>
       {props.player.name || `Player ${props.player.mark}`}
     </Display>
   );

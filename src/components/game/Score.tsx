@@ -18,6 +18,7 @@ const Button = styled.button`
 
   @media (min-width: ${({ theme }) => theme.breakpoints.medium}) {
     font-size: 1.6rem;
+    grid-area: score;
   }
 `;
 
