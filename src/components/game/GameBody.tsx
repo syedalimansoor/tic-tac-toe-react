@@ -6,6 +6,7 @@ import Score from "./Score";
 
 const Wrapper = styled.main`
   padding: 1em;
+  flex-grow: 1;
   display: flex;
   justify-content: center;
 
@@ -14,9 +15,10 @@ const Wrapper = styled.main`
   }
 `;
 const Container = styled.div`
-  width: min(100%, 25em);
+  width: min(100%, 70em);
   display: grid;
   justify-items: center;
+  align-content: space-between;
 `;
 
 export default function GameBody() {
