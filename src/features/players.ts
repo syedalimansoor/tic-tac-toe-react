@@ -17,6 +17,7 @@ export interface PlayersSlice {
   players: [Player, Player];
   setPlayerName: (id: string, name: string) => void;
   setPlayerType: (type: PlayerType) => void;
+  resetScore: () => void;
 }
 
 const createPlayersSlice: StateCreatorWithMiddleware<PlayersSlice> = (
@@ -49,14 +50,21 @@ const createPlayersSlice: StateCreatorWithMiddleware<PlayersSlice> = (
     }
     set({ players });
   },
+
+  resetScore() {
+    const players = get().players;
+    players.forEach((player) => (player.score = 0));
+    set({ players });
+  },
 });
 
 export default createPlayersSlice;
 
-export const selectPlayers = (store: RootState) => {
-  return {
-    players: store.players,
-    setPlayerName: store.setPlayerName,
-    setPlayerType: store.setPlayerType,
-  };
+export const selectPlayers = ({
+  players,
+  setPlayerName,
+  setPlayerType,
+  resetScore,
+}: RootState) => {
+  return { players, setPlayerName, setPlayerType, resetScore };
 };
