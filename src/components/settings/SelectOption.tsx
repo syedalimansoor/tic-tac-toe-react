@@ -10,6 +10,8 @@ interface Props {
 
 const Wrapper = styled.label``;
 
+const Radio = styled.input.attrs({ type: "radio" })``;
+
 const Content = styled.span<{ checked: boolean }>`
   display: inline-block;
   width: 100%;
@@ -23,7 +25,9 @@ const Content = styled.span<{ checked: boolean }>`
   padding: 0.6em;
   border-radius: 0.3em;
 
-  transition: 200ms ease;
+  transition-property: color, background-color;
+  transition-duration: 200ms;
+  transition-timing-function: ease;
   cursor: pointer;
 
   &:hover {
@@ -34,20 +38,23 @@ const Content = styled.span<{ checked: boolean }>`
   @media (min-width: ${({ theme }) => theme.breakpoints.medium}) {
     font-size: 1.2rem;
   }
-`;
 
-const Radio = styled.input.attrs({ type: "radio" })``;
+  ${Radio}:focus-within ~ & {
+    outline: 2px solid ${({ theme }) => theme.colors.orange[100]};
+    outline-offset: 2px;
+  }
+`;
 
 export default function SelectOption(props: Props) {
   return (
     <Wrapper>
-      <Content checked={props.checked}>{props.value}</Content>
       <Radio
         checked={props.checked}
         onChange={props.onChange}
         name={props.group}
         value={props.value}
       />
+      <Content checked={props.checked}>{props.value}</Content>
     </Wrapper>
   );
 }
