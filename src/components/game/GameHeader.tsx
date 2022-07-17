@@ -17,9 +17,17 @@ const StyledHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   width: min(100%, 25em);
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.medium}) {
+    width: min(100%, 70em);
+  }
 `;
 const StyledLogo = styled(Logo)`
   font-size: 1.3rem;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.medium}) {
+    font-size: 1.6rem;
+  }
 `;
 
 const ButtonsWrapper = styled.div`
