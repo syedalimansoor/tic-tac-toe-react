@@ -1,3 +1,5 @@
+import { selectGrid } from "$/features/grid";
+import useStore from "$/store";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
@@ -36,7 +38,11 @@ const Button = styled.button`
 
 export default function PlayButton() {
   const navigate = useNavigate();
-  return (
-    <Button onClick={() => navigate("/game")}>Let the games begin!</Button>
-  );
+  const { resetGrid } = useStore(selectGrid);
+
+  const startGame = () => {
+    resetGrid();
+    navigate("/game");
+  };
+  return <Button onClick={startGame}>Let the games begin!</Button>;
 }
