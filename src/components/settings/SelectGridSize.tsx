@@ -1,10 +1,10 @@
-import { selectGridSize } from "$/features/grid";
+import { selectGrid } from "$/features/grid";
 import useStore from "$/store";
 import SelectOption from "./SelectOption";
 import { Label, OptionsList } from "./styled";
 
 export default function SelectGridSize() {
-  const { gridSize, setGridSize } = useStore(selectGridSize);
+  const { gridSize, setGridSize } = useStore(selectGrid);
 
   return (
     <>

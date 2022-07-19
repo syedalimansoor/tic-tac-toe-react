@@ -38,7 +38,7 @@ const createGridSlice: StateCreatorWithMiddleware<GridSlice> = (set, get) => ({
 
 export default createGridSlice;
 
-export const selectGridSize = (store: RootState) => {
+export const selectGrid = (store: RootState) => {
   const { gridSize, setGridSize, grid, resetGrid } = store;
   return { gridSize, setGridSize, grid, resetGrid };
 };
