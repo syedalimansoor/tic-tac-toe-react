@@ -1,10 +1,12 @@
 import { RootState } from "$/store";
 import { StateCreatorWithMiddleware } from "$/utils/StateCreatorWithMiddleware";
+import { v4 as uuid } from "uuid";
 import { Mark } from "./players";
 
 export type GridSize = 3 | 4 | 5;
 
 export interface GridCell {
+  id: string;
   mark: Mark | null;
   match: boolean;
 }
@@ -29,7 +31,7 @@ const createGridSlice: StateCreatorWithMiddleware<GridSlice> = (set, get) => ({
     const grid = Array.from({ length: gridSize }, () =>
       Array.from(
         { length: gridSize },
-        () => ({ mark: null, match: false } as GridCell)
+        () => ({ mark: null, match: false, id: uuid() } as GridCell)
       )
     );
     set({ grid });
