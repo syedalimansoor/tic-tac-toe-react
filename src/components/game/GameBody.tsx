@@ -7,7 +7,7 @@ import PlayerDisplay from "./PlayerDisplay";
 import Score from "./Score";
 
 const Wrapper = styled.main`
-  padding: 1em;
+  padding: 1.6rem;
   flex-grow: 1;
   display: flex;
   justify-content: center;
@@ -34,7 +34,7 @@ const Container = styled.div`
 const PlayersContainer = styled.div`
   display: flex;
   width: min(100%, 20em);
-  padding-inline: 1em;
+  /* padding-inline: 1em; */
   justify-content: stretch;
   gap: 3em;
   & > * {

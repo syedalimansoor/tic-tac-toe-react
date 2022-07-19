@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 const Wrapper = styled.header`
   border-bottom: 4px solid ${({ theme }) => theme.colors.blue[100]};
-  padding: 1rem;
+  padding: 1rem 1.6rem;
   display: flex;
   justify-content: center;
 `;
