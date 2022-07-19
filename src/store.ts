@@ -2,10 +2,10 @@ import create from "zustand";
 import { devtools } from "zustand/middleware";
 import { StateCreatorWithMiddleware } from "./utils/StateCreatorWithMiddleware";
 import createGameModeSlice, { GameModeSlice } from "./features/gameMode";
-import createGridSizeSlice, { GridSizeSlice } from "./features/gridSize";
+import createGridSlice, { GridSlice } from "./features/grid";
 import createPlayersSlice, { PlayersSlice } from "./features/players";
 
-export interface RootState extends GameModeSlice, GridSizeSlice, PlayersSlice {}
+export interface RootState extends GameModeSlice, GridSlice, PlayersSlice {}
 
 const applyMiddleware = (f: StateCreatorWithMiddleware<RootState>) =>
   devtools(f);
@@ -13,7 +13,7 @@ const applyMiddleware = (f: StateCreatorWithMiddleware<RootState>) =>
 const useStore = create<RootState>()(
   applyMiddleware((...args) => ({
     ...createGameModeSlice(...args),
-    ...createGridSizeSlice(...args),
+    ...createGridSlice(...args),
     ...createPlayersSlice(...args),
   }))
 );

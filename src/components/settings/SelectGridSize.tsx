@@ -1,4 +1,4 @@
-import { selectGridSize } from "$/features/gridSize";
+import { selectGridSize } from "$/features/grid";
 import useStore from "$/store";
 import SelectOption from "./SelectOption";
 import { Label, OptionsList } from "./styled";
