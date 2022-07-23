@@ -21,6 +21,7 @@ const Container = styled.div`
   display: grid;
   justify-items: center;
   align-items: center;
+  row-gap: 1.6rem;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.medium}) {
     grid-template:
