@@ -7,7 +7,8 @@ import GridCell from "./GridCell";
 
 const StyledGrid = styled.div<{ size: GridSize }>`
   display: grid;
-  grid-template: ${({ size }) => `repeat(${size}, 1fr) / repeat(${size}, 1fr)`};
+  grid-template: ${({ size }) =>
+    `repeat(${size}, minmax(0, 1fr)) / repeat(${size}, minmax(0, 1fr))`};
   justify-self: stretch;
   aspect-ratio: 1;
 
@@ -28,7 +29,15 @@ export default function Grid() {
   return (
     <StyledGrid size={gridSize}>
       {grid.map((row, rowIdx) =>
-        row.map(({ mark, match, id }, colIdx) => <GridCell key={id} />)
+        row.map(({ mark, match, id }, colIdx) => (
+          <GridCell
+            key={id}
+            rowIdx={rowIdx}
+            colIdx={colIdx}
+            mark={mark}
+            match={match}
+          />
+        ))
       )}
     </StyledGrid>
   );
