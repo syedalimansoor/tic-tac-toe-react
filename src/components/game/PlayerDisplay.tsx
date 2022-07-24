@@ -29,6 +29,7 @@ const Display = styled.div<{ mark: Mark }>`
 
   @media (min-width: ${({ theme }) => theme.breakpoints.medium}) {
     background-image: url(${({ mark }) => background.desktop[mark]});
+    font-size: 2rem;
   }
 `;
 

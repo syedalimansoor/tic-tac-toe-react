@@ -17,7 +17,7 @@ const Button = styled.button`
   cursor: pointer;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.medium}) {
-    font-size: 1.6rem;
+    font-size: 2rem;
     grid-area: score;
   }
 `;
