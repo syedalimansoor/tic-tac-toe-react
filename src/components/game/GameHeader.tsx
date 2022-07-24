@@ -5,6 +5,7 @@ import resetIcon from "$/assets/icon-reset.svg";
 import settingsIcon from "$/assets/icon-settings.svg";
 import HeaderButton from "./HeaderButton";
 import { useNavigate } from "react-router-dom";
+import useStore from "$/store";
 
 const Wrapper = styled.header`
   border-bottom: 4px solid ${({ theme }) => theme.colors.blue[100]};
@@ -38,13 +39,14 @@ const ButtonsWrapper = styled.div`
 
 export default function GameHeader() {
   const navigate = useNavigate();
+  const resetGrid = useStore((store) => store.resetGrid);
 
   return (
     <Wrapper>
       <StyledHeader>
         <StyledLogo />
         <ButtonsWrapper>
-          <HeaderButton src={resetIcon} />
+          <HeaderButton src={resetIcon} onClick={resetGrid} />
           <HeaderButton
             src={settingsIcon}
             onClick={() => navigate("/settings")}
