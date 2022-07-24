@@ -29,6 +29,7 @@ const Container = styled.div`
       "player1 grid player2" auto
       ". current ." auto / 1fr auto 1fr;
     column-gap: 4em;
+    row-gap: 2rem;
     width: min(100%, 70em);
   }
 `;
