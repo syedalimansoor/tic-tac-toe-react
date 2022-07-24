@@ -22,6 +22,7 @@ export interface PlayersSlice {
 
   currentPlayerIdx: PlayerIdx;
   toggleCurrentPlayer: () => void;
+  setCurrentPlayer: (idx: PlayerIdx) => void;
 }
 
 const createPlayersSlice: StateCreatorWithMiddleware<PlayersSlice> = (
@@ -65,6 +66,9 @@ const createPlayersSlice: StateCreatorWithMiddleware<PlayersSlice> = (
 
   toggleCurrentPlayer() {
     set({ currentPlayerIdx: get().currentPlayerIdx ^ 1 });
+  },
+  setCurrentPlayer(idx: PlayerIdx) {
+    set({ currentPlayerIdx: idx });
   },
 });
 
