@@ -13,6 +13,7 @@ interface Props {
   colIdx: number;
   mark: Mark | null;
   match: boolean;
+  updateCounters: (rowIdx: number, colIdx: number, mark: Mark) => void;
 }
 
 const StyledCell = styled.button<{ size: GridSize }>`
@@ -63,6 +64,11 @@ export default function GridCell(props: Props) {
   const handleClick = () => {
     if (!props.mark) {
       markGrid(props.rowIdx, props.colIdx, players[currentPlayerIdx].mark);
+      props.updateCounters(
+        props.rowIdx,
+        props.colIdx,
+        players[currentPlayerIdx].mark
+      );
       togglePlayer();
     }
   };
