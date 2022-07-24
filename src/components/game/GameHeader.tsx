@@ -41,9 +41,11 @@ export default function GameHeader() {
   const navigate = useNavigate();
   const resetGrid = useStore((store) => store.resetGrid);
   const setCurrentPlayer = useStore((store) => store.setCurrentPlayer);
+  const resetGridCounters = useStore((store) => store.resetGridCounters);
 
   const handleReset = () => {
     resetGrid();
+    resetGridCounters();
     setCurrentPlayer(0);
   };
 
