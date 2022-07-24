@@ -4,8 +4,13 @@ import { StateCreatorWithMiddleware } from "./utils/StateCreatorWithMiddleware";
 import createGameModeSlice, { GameModeSlice } from "./features/gameMode";
 import createGridSlice, { GridSlice } from "./features/grid";
 import createPlayersSlice, { PlayersSlice } from "./features/players";
+import createMovesSlice, { MovesSlice } from "./features/moves";
 
-export interface RootState extends GameModeSlice, GridSlice, PlayersSlice {}
+export interface RootState
+  extends GameModeSlice,
+    GridSlice,
+    PlayersSlice,
+    MovesSlice {}
 
 const applyMiddleware = (f: StateCreatorWithMiddleware<RootState>) =>
   devtools(f);
@@ -15,6 +20,7 @@ const useStore = create<RootState>()(
     ...createGameModeSlice(...args),
     ...createGridSlice(...args),
     ...createPlayersSlice(...args),
+    ...createMovesSlice(...args),
   }))
 );
 
