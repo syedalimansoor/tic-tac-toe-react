@@ -17,7 +17,7 @@ const Wrapper = styled.main`
   }
 `;
 const Container = styled.div`
-  width: min(100%, 70em);
+  width: min(100%, 20em);
   display: grid;
   justify-items: center;
   align-items: center;
@@ -29,13 +29,13 @@ const Container = styled.div`
       "player1 grid player2" auto
       ". current ." auto / 1fr auto 1fr;
     column-gap: 4em;
+    width: min(100%, 70em);
   }
 `;
 
 const PlayersContainer = styled.div`
   display: flex;
-  width: min(100%, 20em);
-  /* padding-inline: 1em; */
+  width: 100%;
   justify-content: stretch;
   gap: 3em;
   & > * {
