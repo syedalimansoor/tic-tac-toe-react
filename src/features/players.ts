@@ -4,6 +4,7 @@ import { StateCreatorWithMiddleware } from "$/utils/StateCreatorWithMiddleware";
 
 export type PlayerType = "human" | "ai";
 export type Mark = "X" | "O";
+export type PlayerIdx = 0 | 1 | number;
 
 export interface Player {
   id: string;
@@ -18,6 +19,9 @@ export interface PlayersSlice {
   setPlayerName: (id: string, name: string) => void;
   setPlayerType: (type: PlayerType) => void;
   resetScore: () => void;
+
+  currentPlayerIdx: PlayerIdx;
+  toggleCurrentPlayer: () => void;
 }
 
 const createPlayersSlice: StateCreatorWithMiddleware<PlayersSlice> = (
@@ -55,6 +59,12 @@ const createPlayersSlice: StateCreatorWithMiddleware<PlayersSlice> = (
     const players = get().players;
     players.forEach((player) => (player.score = 0));
     set({ players });
+  },
+
+  currentPlayerIdx: 0,
+
+  toggleCurrentPlayer() {
+    set({ currentPlayerIdx: get().currentPlayerIdx ^ 1 });
   },
 });
 
