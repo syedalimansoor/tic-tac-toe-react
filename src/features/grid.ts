@@ -17,6 +17,7 @@ export interface GridSlice {
 
   grid: GridCell[][];
   resetGrid: () => void;
+  markGrid: (rowIdx: number, colIdx: number, mark: Mark) => void;
 }
 
 const createGridSlice: StateCreatorWithMiddleware<GridSlice> = (set, get) => ({
@@ -26,6 +27,7 @@ const createGridSlice: StateCreatorWithMiddleware<GridSlice> = (set, get) => ({
   },
 
   grid: [],
+
   resetGrid() {
     const gridSize = get().gridSize;
     const grid = Array.from({ length: gridSize }, () =>
@@ -34,6 +36,12 @@ const createGridSlice: StateCreatorWithMiddleware<GridSlice> = (set, get) => ({
         () => ({ mark: null, match: false, id: uuid() } as GridCell)
       )
     );
+    set({ grid });
+  },
+
+  markGrid(rowIdx, colIdx, mark) {
+    const grid = get().grid;
+    if (!grid[rowIdx][colIdx].mark) grid[rowIdx][colIdx].mark = mark;
     set({ grid });
   },
 });
