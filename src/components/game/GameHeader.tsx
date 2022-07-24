@@ -42,10 +42,12 @@ export default function GameHeader() {
   const resetGrid = useStore((store) => store.resetGrid);
   const setCurrentPlayer = useStore((store) => store.setCurrentPlayer);
   const resetGridCounters = useStore((store) => store.resetGridCounters);
+  const resetMoves = useStore((store) => store.resetMoves);
 
   const handleReset = () => {
     resetGrid();
     resetGridCounters();
+    resetMoves();
     setCurrentPlayer(0);
   };
 
