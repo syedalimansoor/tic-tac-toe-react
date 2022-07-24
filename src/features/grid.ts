@@ -11,6 +11,18 @@ export interface GridCell {
   match: boolean;
 }
 
+export interface MarkCounter {
+  X: number;
+  O: number;
+}
+
+export interface GridCounters {
+  main: MarkCounter;
+  anti: MarkCounter;
+  rows: MarkCounter[];
+  cols: MarkCounter[];
+}
+
 export interface GridSlice {
   gridSize: GridSize;
   setGridSize: (gridSize: GridSize) => void;
@@ -18,6 +30,10 @@ export interface GridSlice {
   grid: GridCell[][];
   resetGrid: () => void;
   markGrid: (rowIdx: number, colIdx: number, mark: Mark) => void;
+
+  gridCounters: GridCounters;
+  resetGridCounters: () => void;
+  updateGridCounters: (rowIdx: number, colIdx: number, mark: Mark) => void;
 }
 
 const createGridSlice: StateCreatorWithMiddleware<GridSlice> = (set, get) => ({
@@ -43,6 +59,36 @@ const createGridSlice: StateCreatorWithMiddleware<GridSlice> = (set, get) => ({
     const grid = get().grid;
     if (!grid[rowIdx][colIdx].mark) grid[rowIdx][colIdx].mark = mark;
     set({ grid });
+  },
+
+  gridCounters: {
+    main: { X: 0, O: 0 },
+    anti: { X: 0, O: 0 },
+    rows: [],
+    cols: [],
+  },
+
+  resetGridCounters() {
+    const gridSize = get().gridSize;
+    set({
+      gridCounters: {
+        main: { X: 0, O: 0 },
+        anti: { X: 0, O: 0 },
+        rows: Array.from({ length: gridSize }, () => ({ X: 0, O: 0 })),
+        cols: Array.from({ length: gridSize }, () => ({ X: 0, O: 0 })),
+      },
+    });
+  },
+
+  updateGridCounters(rowIdx, colIdx, mark) {
+    const gridCounters = get().gridCounters;
+    const gridSize = get().gridSize;
+
+    if (rowIdx === colIdx) gridCounters.main[mark] += 1;
+    if (rowIdx + colIdx === gridSize - 1) gridCounters.anti[mark] += 1;
+
+    gridCounters.rows[rowIdx][mark] += 1;
+    gridCounters.cols[colIdx][mark] += 1;
   },
 });
 

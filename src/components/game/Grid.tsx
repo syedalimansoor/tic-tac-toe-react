@@ -26,6 +26,8 @@ export default function Grid() {
     if (!grid.length) navigate("/settings");
   }, []);
 
+  const updateCounters = useStore((store) => store.updateGridCounters);
+
   return (
     <StyledGrid size={gridSize}>
       {grid.map((row, rowIdx) =>
@@ -36,6 +38,7 @@ export default function Grid() {
             colIdx={colIdx}
             mark={mark}
             match={match}
+            updateCounters={updateCounters}
           />
         ))
       )}
