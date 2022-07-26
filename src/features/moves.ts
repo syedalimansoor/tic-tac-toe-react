@@ -2,27 +2,27 @@ import { RootState } from "$/store";
 import { StateCreatorWithMiddleware } from "$/utils/StateCreatorWithMiddleware";
 
 export interface MovesSlice {
-  moves: number;
+  numMoves: number;
   incrementMoves: () => void;
   resetMoves: () => void;
 }
 
 const createMovesSlice: StateCreatorWithMiddleware<MovesSlice> = (set) => ({
-  moves: 0,
+  numMoves: 0,
   incrementMoves() {
-    set((state) => ({ moves: state.moves + 1 }));
+    set((state) => ({ numMoves: state.numMoves + 1 }));
   },
   resetMoves() {
-    set({ moves: 0 });
+    set({ numMoves: 0 });
   },
 });
 
 export default createMovesSlice;
 
 export const selectMoves = ({
-  moves,
+  numMoves,
   incrementMoves,
   resetMoves,
 }: RootState) => {
-  return { moves, incrementMoves, resetMoves };
+  return { numMoves, incrementMoves, resetMoves };
 };
