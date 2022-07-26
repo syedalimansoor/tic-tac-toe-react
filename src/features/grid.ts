@@ -1,4 +1,5 @@
 import { RootState } from "$/store";
+import { MatchDetails } from "$/utils/checkForMatch";
 import { StateCreatorWithMiddleware } from "$/utils/StateCreatorWithMiddleware";
 import { v4 as uuid } from "uuid";
 import { Mark } from "./players";
@@ -30,6 +31,7 @@ export interface GridSlice {
   grid: GridCell[][];
   resetGrid: () => void;
   markGrid: (rowIdx: number, colIdx: number, mark: Mark) => void;
+  matchGrid: (matchDetails: MatchDetails) => void;
 
   gridCounters: GridCounters;
   resetGridCounters: () => void;
@@ -58,6 +60,26 @@ const createGridSlice: StateCreatorWithMiddleware<GridSlice> = (set, get) => ({
   markGrid(rowIdx, colIdx, mark) {
     const grid = get().grid;
     if (!grid[rowIdx][colIdx].mark) grid[rowIdx][colIdx].mark = mark;
+    set({ grid });
+  },
+
+  matchGrid(matchDetails) {
+    const grid = get().grid;
+    const gridSize = get().gridSize;
+
+    for (let rowIdx = 0, row = grid[rowIdx]; rowIdx < grid.length; rowIdx++) {
+      for (let colIdx = 0, cell = row[colIdx]; colIdx < row.length; colIdx++) {
+        if (
+          (matchDetails.main && rowIdx === colIdx) ||
+          (matchDetails.anti && rowIdx + colIdx === gridSize - 1) ||
+          (matchDetails.rowIdx !== undefined &&
+            rowIdx === matchDetails.rowIdx) ||
+          (matchDetails.colIdx !== undefined && colIdx === matchDetails.colIdx)
+        )
+          cell.match = true;
+      }
+    }
+
     set({ grid });
   },
 
