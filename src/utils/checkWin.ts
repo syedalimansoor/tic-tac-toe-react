@@ -1,5 +1,13 @@
 import { GridCounters, GridSize, MarkCounter } from "$/features/grid";
 
+interface MatchDetails {
+  doesMatchExist: boolean;
+  rowIdx?: number;
+  colIdx?: number;
+  main?: boolean;
+  anti?: boolean;
+}
+
 function checkCounter(counter: MarkCounter, gridSize: GridSize) {
   return counter.O === gridSize || counter.X === gridSize;
 }
@@ -7,18 +15,21 @@ function checkCounter(counter: MarkCounter, gridSize: GridSize) {
 export default function checkWin(
   gridCounters: GridCounters,
   gridSize: GridSize
-): boolean {
+): MatchDetails {
   const { main, anti, rows, cols } = gridCounters;
 
-  if (checkCounter(main, gridSize) || checkCounter(anti, gridSize)) return true;
+  if (checkCounter(main, gridSize)) return { doesMatchExist: true, main: true };
+  if (checkCounter(anti, gridSize)) return { doesMatchExist: true, anti: true };
 
-  for (let counter of rows) {
-    if (checkCounter(counter, gridSize)) return true;
+  for (let rowIdx = 0; rowIdx < rows.length; rowIdx++) {
+    if (checkCounter(rows[rowIdx], gridSize))
+      return { doesMatchExist: true, rowIdx };
   }
 
-  for (let counter of cols) {
-    if (checkCounter(counter, gridSize)) return true;
+  for (let colIdx = 0; colIdx < cols.length; colIdx++) {
+    if (checkCounter(cols[colIdx], gridSize))
+      return { doesMatchExist: true, colIdx };
   }
 
-  return false;
+  return { doesMatchExist: false };
 }
