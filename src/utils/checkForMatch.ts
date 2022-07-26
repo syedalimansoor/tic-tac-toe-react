@@ -1,6 +1,6 @@
 import { GridCounters, GridSize, MarkCounter } from "$/features/grid";
 
-interface MatchDetails {
+export interface MatchDetails {
   doesMatchExist: boolean;
   rowIdx?: number;
   colIdx?: number;
@@ -12,7 +12,7 @@ function checkCounter(counter: MarkCounter, gridSize: GridSize) {
   return counter.O === gridSize || counter.X === gridSize;
 }
 
-export default function checkWin(
+export default function checkForMatch(
   gridCounters: GridCounters,
   gridSize: GridSize
 ): MatchDetails {
