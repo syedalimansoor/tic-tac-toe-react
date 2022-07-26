@@ -33,7 +33,7 @@ const StyledCell = styled.button<{ size: GridSize }>`
   }
 
   transition: background 200ms ease;
-  &:hover {
+  &:hover:not(:disabled) {
     background-color: ${({ theme }) => theme.colors.orange[300]};
   }
 `;
@@ -56,22 +56,8 @@ const StyledSVG = styled(ReactSVG)`
 
 export default function GridCell(props: Props) {
   const gridSize = useStore((store) => store.gridSize);
-  const currentPlayerIdx = useStore((store) => store.currentPlayerIdx);
-  const players = useStore((store) => store.players);
-  const markGrid = useStore((store) => store.markGrid);
-  const togglePlayer = useStore((store) => store.toggleCurrentPlayer);
 
-  const handleClick = () => {
-    if (!props.mark) {
-      markGrid(props.rowIdx, props.colIdx, players[currentPlayerIdx].mark);
-      props.updateCounters(
-        props.rowIdx,
-        props.colIdx,
-        players[currentPlayerIdx].mark
-      );
-      togglePlayer();
-    }
-  };
+  const handleClick = () => {};
 
   return (
     <StyledCell size={gridSize} onClick={handleClick} disabled={!!props.mark}>
