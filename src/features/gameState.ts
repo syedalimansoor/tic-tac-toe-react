@@ -1,14 +1,21 @@
 import { StateCreatorWithMiddleware } from "$/utils/StateCreatorWithMiddleware";
 
-export interface GameState {
-  isGameOver: boolean;
+type GameRunState = {
+  isGameOver: false;
+};
+
+type GameEndState = {
+  isGameOver: true;
   doesMatchExist: boolean;
-}
+};
+
+export type GameState = GameRunState | GameEndState;
 
 export interface GameStateSlice {
   gameState: GameState;
   drawGame: () => void;
   winGame: () => void;
+  resetGameState: () => void;
 }
 
 const createGameStateSlice: StateCreatorWithMiddleware<GameStateSlice> = (
@@ -20,6 +27,9 @@ const createGameStateSlice: StateCreatorWithMiddleware<GameStateSlice> = (
   },
   winGame() {
     set({ gameState: { isGameOver: true, doesMatchExist: true } });
+  },
+  resetGameState() {
+    set({ gameState: { isGameOver: false } });
   },
 });
 
