@@ -15,7 +15,7 @@ interface Props {
   match: boolean;
 }
 
-const StyledCell = styled.button<{ size: GridSize }>`
+const StyledCell = styled.button<{ size: GridSize; match: boolean }>`
   background: transparent;
   border: none;
   padding: 0.8em;
@@ -35,6 +35,13 @@ const StyledCell = styled.button<{ size: GridSize }>`
   &:hover:not(:disabled) {
     background-color: ${({ theme }) => theme.colors.orange[300]};
   }
+
+  ${(props) =>
+    props.match && `background-color: ${props.theme.colors.orange[100]};`}
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.medium}) {
+    padding: 1.2em;
+  }
 `;
 
 const fadeIn = keyframes`
@@ -45,11 +52,21 @@ const fadeIn = keyframes`
   }
 `;
 
-const StyledSVG = styled(ReactSVG)`
+const StyledSVG = styled(ReactSVG)<{ match: boolean; mark: Mark }>`
   svg {
     width: 100%;
     height: 100%;
     animation: ${fadeIn} 200ms ease;
+  }
+
+  path {
+    transition: stroke 1s ease;
+    ${(props) => {
+      if (props.match)
+        return `
+      stroke: ${props.theme.colors.orange[300]};
+    `;
+    }}
   }
 `;
 
@@ -58,6 +75,7 @@ export default function GridCell(props: Props) {
   const handleGridCellClick = useStore((store) => store.handleGridCellClick);
   const players = useStore((store) => store.players);
   const currentPlayerIdx = useStore((store) => store.currentPlayerIdx);
+  const gameState = useStore((store) => store.gameState);
 
   const currentPlayer = players[currentPlayerIdx];
 
@@ -66,8 +84,19 @@ export default function GridCell(props: Props) {
   };
 
   return (
-    <StyledCell size={gridSize} onClick={handleClick} disabled={!!props.mark}>
-      {props.mark && <StyledSVG src={mark[props.mark]} />}
+    <StyledCell
+      size={gridSize}
+      onClick={handleClick}
+      disabled={!!props.mark || gameState.isGameOver}
+      match={props.match}
+    >
+      {props.mark && (
+        <StyledSVG
+          src={mark[props.mark]}
+          match={+props.match}
+          mark={props.mark}
+        />
+      )}
     </StyledCell>
   );
 }
