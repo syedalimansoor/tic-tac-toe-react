@@ -40,13 +40,18 @@ const ButtonsWrapper = styled.div`
 export default function GameHeader() {
   const navigate = useNavigate();
   const resetGame = useStore((store) => store.resetGame);
+  const gameState = useStore((store) => store.gameState);
 
   return (
     <Wrapper>
       <StyledHeader>
         <StyledLogo />
         <ButtonsWrapper>
-          <HeaderButton src={resetIcon} onClick={resetGame} />
+          <HeaderButton
+            src={resetIcon}
+            onClick={resetGame}
+            highlight={gameState.isGameOver}
+          />
           <HeaderButton
             src={settingsIcon}
             onClick={() => navigate("/settings")}

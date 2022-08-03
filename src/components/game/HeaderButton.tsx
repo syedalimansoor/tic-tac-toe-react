@@ -8,9 +8,9 @@ interface Props {
   highlight?: boolean;
 }
 
-const Button = styled.button<{ highlight?: boolean }>`
-  background-color: ${({ theme, highlight }) =>
-    highlight ? theme.colors.orange[100] : "transparent"};
+const Button = styled.button<{ $highlight?: boolean }>`
+  background-color: ${({ theme, $highlight }) =>
+    $highlight ? theme.colors.orange[100] : "transparent"};
   border: 2px solid ${({ theme }) => theme.colors.orange[100]};
   border-radius: 99em;
   padding: 0.2em;
@@ -37,7 +37,7 @@ const Button = styled.button<{ highlight?: boolean }>`
     }
   }
 `;
-const Image = styled(ReactSVG)<{ highlight?: boolean }>`
+const Image = styled(ReactSVG)<{ $highlight?: boolean }>`
   display: contents;
   & span {
     display: contents;
@@ -47,16 +47,16 @@ const Image = styled(ReactSVG)<{ highlight?: boolean }>`
     height: 1.2em;
   }
   & path {
-    fill: ${({ theme, highlight }) =>
-      highlight ? theme.colors.orange[300] : theme.colors.orange[100]};
+    fill: ${({ theme, $highlight }) =>
+      $highlight ? theme.colors.orange[300] : theme.colors.orange[100]};
     transition: fill 200ms ease;
   }
 `;
 
 export default function HeaderButton(props: Props) {
   return (
-    <Button onClick={props.onClick} type="button" highlight={props.highlight}>
-      <Image src={props.src} wrapper="span" highlight={props.highlight} />
+    <Button onClick={props.onClick} type="button" $highlight={props.highlight}>
+      <Image src={props.src} wrapper="span" $highlight={props.highlight} />
     </Button>
   );
 }
