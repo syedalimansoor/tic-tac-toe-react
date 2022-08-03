@@ -39,24 +39,14 @@ const ButtonsWrapper = styled.div`
 
 export default function GameHeader() {
   const navigate = useNavigate();
-  const resetGrid = useStore((store) => store.resetGrid);
-  const setCurrentPlayer = useStore((store) => store.setCurrentPlayer);
-  const resetGridCounters = useStore((store) => store.resetGridCounters);
-  const resetMoves = useStore((store) => store.resetMoves);
-
-  const handleReset = () => {
-    resetGrid();
-    resetGridCounters();
-    resetMoves();
-    setCurrentPlayer(0);
-  };
+  const resetGame = useStore((store) => store.resetGame);
 
   return (
     <Wrapper>
       <StyledHeader>
         <StyledLogo />
         <ButtonsWrapper>
-          <HeaderButton src={resetIcon} onClick={handleReset} />
+          <HeaderButton src={resetIcon} onClick={resetGame} />
           <HeaderButton
             src={settingsIcon}
             onClick={() => navigate("/settings")}

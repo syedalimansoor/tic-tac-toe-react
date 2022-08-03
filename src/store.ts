@@ -58,7 +58,11 @@ const useStore = create<RootState>()(
           get().matchGrid(matchDetails);
         } else if (numMoves === gridSize ** 2) {
           set({ gameState: { isGameOver: true, doesMatchExist: false } });
+        } else {
+          get().toggleCurrentPlayer();
         }
+      } else {
+        get().toggleCurrentPlayer();
       }
     },
 
@@ -68,6 +72,7 @@ const useStore = create<RootState>()(
       get().resetGridCounters();
       get().resetMoves();
       get().resetGameState();
+      get().setCurrentPlayer(0);
     },
   }))
 );

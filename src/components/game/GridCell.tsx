@@ -13,7 +13,6 @@ interface Props {
   colIdx: number;
   mark: Mark | null;
   match: boolean;
-  updateCounters: (rowIdx: number, colIdx: number, mark: Mark) => void;
 }
 
 const StyledCell = styled.button<{ size: GridSize }>`
@@ -56,8 +55,15 @@ const StyledSVG = styled(ReactSVG)`
 
 export default function GridCell(props: Props) {
   const gridSize = useStore((store) => store.gridSize);
+  const handleGridCellClick = useStore((store) => store.handleGridCellClick);
+  const players = useStore((store) => store.players);
+  const currentPlayerIdx = useStore((store) => store.currentPlayerIdx);
 
-  const handleClick = () => {};
+  const currentPlayer = players[currentPlayerIdx];
+
+  const handleClick = () => {
+    handleGridCellClick(props.rowIdx, props.colIdx, currentPlayer.mark);
+  };
 
   return (
     <StyledCell size={gridSize} onClick={handleClick} disabled={!!props.mark}>
