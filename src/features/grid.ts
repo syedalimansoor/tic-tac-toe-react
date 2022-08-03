@@ -67,16 +67,23 @@ const createGridSlice: StateCreatorWithMiddleware<GridSlice> = (set, get) => ({
     const grid = get().grid;
     const gridSize = get().gridSize;
 
-    for (let rowIdx = 0, row = grid[rowIdx]; rowIdx < grid.length; rowIdx++) {
-      for (let colIdx = 0, cell = row[colIdx]; colIdx < row.length; colIdx++) {
-        if (
-          (matchDetails.main && rowIdx === colIdx) ||
-          (matchDetails.anti && rowIdx + colIdx === gridSize - 1) ||
-          (matchDetails.rowIdx !== undefined &&
-            rowIdx === matchDetails.rowIdx) ||
-          (matchDetails.colIdx !== undefined && colIdx === matchDetails.colIdx)
-        )
-          cell.match = true;
+    for (let rowIdx = 0; rowIdx < grid.length; rowIdx++) {
+      let row = grid[rowIdx];
+      if (matchDetails.rowIdx !== undefined && rowIdx > matchDetails.rowIdx)
+        break;
+
+      for (let colIdx = 0; colIdx < row.length; colIdx++) {
+        let cell = row[colIdx];
+        if (matchDetails.main) {
+          if (rowIdx === colIdx) cell.match = true;
+        } else if (matchDetails.anti) {
+          if (rowIdx + colIdx === gridSize - 1) cell.match = true;
+        } else if (matchDetails.rowIdx !== undefined) {
+          if (rowIdx === matchDetails.rowIdx) cell.match = true;
+          console.log(cell);
+        } else if (matchDetails.colIdx !== undefined) {
+          if (colIdx === matchDetails.colIdx) cell.match = true;
+        }
       }
     }
 
