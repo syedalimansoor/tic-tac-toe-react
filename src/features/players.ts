@@ -18,6 +18,7 @@ export interface PlayersSlice {
   players: [Player, Player];
   setPlayerName: (id: string, name: string) => void;
   setPlayerType: (type: PlayerType) => void;
+  incrementPlayerScore: (id: string) => void;
   resetScore: () => void;
 
   currentPlayerIdx: PlayerIdx;
@@ -53,6 +54,12 @@ const createPlayersSlice: StateCreatorWithMiddleware<PlayersSlice> = (
         players[1].name = "";
         break;
     }
+    set({ players });
+  },
+
+  incrementPlayerScore(id) {
+    const players = get().players;
+    players.forEach((player) => (player.id === id ? player.score++ : null));
     set({ players });
   },
 

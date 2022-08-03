@@ -56,6 +56,8 @@ const useStore = create<RootState>()(
         if (matchDetails.doesMatchExist) {
           set({ gameState: { isGameOver: true, doesMatchExist: true } });
           get().matchGrid(matchDetails);
+          const currentPlayer = get().players[get().currentPlayerIdx];
+          get().incrementPlayerScore(currentPlayer.id);
         } else if (numMoves === gridSize ** 2) {
           set({ gameState: { isGameOver: true, doesMatchExist: false } });
         } else {
