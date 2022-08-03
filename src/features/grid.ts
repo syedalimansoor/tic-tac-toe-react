@@ -73,6 +73,9 @@ const createGridSlice: StateCreatorWithMiddleware<GridSlice> = (set, get) => ({
         break;
 
       for (let colIdx = 0; colIdx < row.length; colIdx++) {
+        if (matchDetails.colIdx !== undefined && colIdx > matchDetails.colIdx)
+          break;
+
         let cell = row[colIdx];
         if (matchDetails.main) {
           if (rowIdx === colIdx) cell.match = true;
@@ -80,7 +83,6 @@ const createGridSlice: StateCreatorWithMiddleware<GridSlice> = (set, get) => ({
           if (rowIdx + colIdx === gridSize - 1) cell.match = true;
         } else if (matchDetails.rowIdx !== undefined) {
           if (rowIdx === matchDetails.rowIdx) cell.match = true;
-          console.log(cell);
         } else if (matchDetails.colIdx !== undefined) {
           if (colIdx === matchDetails.colIdx) cell.match = true;
         }
