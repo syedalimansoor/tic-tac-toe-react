@@ -4,6 +4,7 @@ import styled from "styled-components";
 import CurrentPlayer from "./CurrentPlayer";
 import Grid from "./Grid";
 import PlayerDisplay from "./PlayerDisplay";
+import Result from "./Result";
 import Score from "./Score";
 
 const Wrapper = styled.main`
@@ -11,6 +12,8 @@ const Wrapper = styled.main`
   flex-grow: 1;
   display: flex;
   justify-content: center;
+  position: relative;
+  overflow: hidden;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.medium}) {
     padding: 2em;
@@ -62,6 +65,7 @@ const Player2Display = styled(PlayerDisplay)`
 
 export default function GameBody() {
   const { players } = useStore(selectPlayers);
+  const gameState = useStore((store) => store.gameState);
 
   return (
     <Wrapper>
@@ -73,6 +77,7 @@ export default function GameBody() {
           <Player2Display player={players[1]} />
         </PlayersContainer>
         <CurrentPlayer />
+        {gameState.isGameOver && <Result />}
       </Container>
     </Wrapper>
   );
