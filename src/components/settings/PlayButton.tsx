@@ -38,12 +38,10 @@ const Button = styled.button`
 
 export default function PlayButton() {
   const navigate = useNavigate();
-  const { resetGrid } = useStore(selectGrid);
-  const resetGridCounters = useStore((store) => store.resetGridCounters);
+  const resetGame = useStore((store) => store.resetGame);
 
   const startGame = () => {
-    resetGrid();
-    resetGridCounters();
+    resetGame();
     navigate("/game");
   };
   return <Button onClick={startGame}>Let the games begin!</Button>;
