@@ -87,7 +87,9 @@ export default function GridCell(props: Props) {
     <StyledCell
       size={gridSize}
       onClick={handleClick}
-      disabled={!!props.mark || gameState.isGameOver}
+      disabled={
+        !!props.mark || gameState.isGameOver || currentPlayer.type === "ai"
+      }
       match={props.match}
     >
       {props.mark && (
