@@ -17,7 +17,7 @@ const Container = styled(motion.div)`
   text-align: center;
   font-size: 1.8rem;
 
-  animation: ${fadeInZoomOut} 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  animation: ${fadeInZoomOut} 0.5s 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.medium}) {
     font-size: 2.2rem;
