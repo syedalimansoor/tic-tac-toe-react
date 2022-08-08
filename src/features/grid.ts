@@ -1,6 +1,7 @@
 import { RootState } from "$/store";
 import { MatchDetails } from "$/utils/checkForMatch";
 import { StateCreatorWithMiddleware } from "$/utils/StateCreatorWithMiddleware";
+import updateGridCountersAbstract from "$/utils/updateGridCounters";
 import { v4 as uuid } from "uuid";
 import { Mark } from "./players";
 
@@ -115,11 +116,7 @@ const createGridSlice: StateCreatorWithMiddleware<GridSlice> = (set, get) => ({
     const gridCounters = get().gridCounters;
     const gridSize = get().gridSize;
 
-    if (rowIdx === colIdx) gridCounters.main[mark] += 1;
-    if (rowIdx + colIdx === gridSize - 1) gridCounters.anti[mark] += 1;
-
-    gridCounters.rows[rowIdx][mark] += 1;
-    gridCounters.cols[colIdx][mark] += 1;
+    updateGridCountersAbstract(gridCounters, gridSize, rowIdx, colIdx, mark);
   },
 });
 
