@@ -35,7 +35,7 @@ const spring: Transition = {
   damping: 30,
 };
 
-const worker: Worker = new Worker("src/workers/minimax.js");
+const worker: Worker = new Worker("/minimax.js");
 
 export default function CurrentPlayer() {
   const { currentPlayerIdx, players } = useStore(
