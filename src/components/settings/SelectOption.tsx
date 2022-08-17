@@ -6,6 +6,7 @@ interface Props {
   value: string;
   checked: boolean;
   onChange: ChangeEventHandler<HTMLInputElement>;
+  disabled?: boolean;
 }
 
 const Wrapper = styled.label``;
@@ -25,12 +26,12 @@ const Content = styled.span<{ checked: boolean }>`
   padding: 0.6em;
   border-radius: 0.3em;
 
-  transition-property: color, background-color;
+  transition-property: color, background-color, opacity;
   transition-duration: 200ms;
   transition-timing-function: ease;
-  cursor: pointer;
 
-  &:hover {
+  ${Radio}:not(:disabled) ~ &:hover {
+    cursor: pointer;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.3),
       0 0 5px ${({ theme }) => theme.colors.orange[300]};
   }
@@ -43,6 +44,10 @@ const Content = styled.span<{ checked: boolean }>`
     outline: 2px solid ${({ theme }) => theme.colors.orange[100]};
     outline-offset: 2px;
   }
+
+  ${Radio}:disabled ~ & {
+    opacity: 0.5;
+  }
 `;
 
 export default function SelectOption(props: Props) {
@@ -53,6 +58,7 @@ export default function SelectOption(props: Props) {
         onChange={props.onChange}
         name={props.group}
         value={props.value}
+        disabled={props.disabled}
       />
       <Content checked={props.checked}>{props.value}</Content>
     </Wrapper>

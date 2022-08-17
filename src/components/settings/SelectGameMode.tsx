@@ -7,10 +7,13 @@ import { Label, OptionsList } from "./styled";
 export default function SelectGameMode() {
   const { gameMode, setGameMode } = useStore(selectGameMode);
   const { setPlayerType } = useStore(selectPlayers);
+  const gridSize = useStore((store) => store.gridSize);
+  const setGridSize = useStore((store) => store.setGridSize);
 
   const handlePvC = () => {
     setGameMode("PvC");
     setPlayerType("ai");
+    setGridSize(3);
   };
   const handlePvP = () => {
     setGameMode("PvP");
@@ -26,6 +29,7 @@ export default function SelectGameMode() {
           value="PvC"
           checked={gameMode === "PvC"}
           onChange={handlePvC}
+          disabled={[4, 5].includes(gridSize)}
         />
         <SelectOption
           group="gameMode"

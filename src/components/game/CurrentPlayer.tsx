@@ -1,6 +1,7 @@
 import { PlayerIdx } from "$/features/players";
 import useStore from "$/store";
 import { motion, Transition } from "framer-motion";
+import { useEffect } from "react";
 import styled from "styled-components";
 
 const Wrapper = styled.div<{ currentPlayerIdx: PlayerIdx }>`
@@ -34,6 +35,8 @@ const spring: Transition = {
   damping: 30,
 };
 
+const worker: Worker = new Worker("src/workers/minimax.js");
+
 export default function CurrentPlayer() {
   const { currentPlayerIdx, players } = useStore(
     ({ currentPlayerIdx, players }) => ({
@@ -41,6 +44,24 @@ export default function CurrentPlayer() {
       players,
     })
   );
+  const grid = useStore((store) => store.grid);
+  const gridCounters = useStore((store) => store.gridCounters);
+  const handleGridCellClick = useStore((store) => store.handleGridCellClick);
+
+  const currentPlayer = players[currentPlayerIdx];
+
+  useEffect(() => {
+    worker.onmessage = (message) => {
+      const { rowIdx, colIdx } = message.data;
+      handleGridCellClick(rowIdx, colIdx, "O");
+    };
+  }, []);
+
+  useEffect(() => {
+    if (currentPlayer.type === "ai") {
+      worker.postMessage([grid, gridCounters, true]);
+    }
+  }, [currentPlayer]);
 
   return (
     <Wrapper currentPlayerIdx={currentPlayerIdx}>

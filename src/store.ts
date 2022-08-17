@@ -7,6 +7,7 @@ import createPlayersSlice, { Mark, PlayersSlice } from "./features/players";
 import createMovesSlice, { MovesSlice } from "./features/moves";
 import createGameStateSlice, { GameStateSlice } from "./features/gameState";
 import checkForMatch from "./utils/checkForMatch";
+import minimax, { Move } from "./utils/minimax";
 
 export interface RootState
   extends GameModeSlice,
@@ -54,12 +55,14 @@ const useStore = create<RootState>()(
 
         // Check if current counter values result in a match
         if (matchDetails.doesMatchExist) {
-          set({ gameState: { isGameOver: true, doesMatchExist: true } });
           get().matchGrid(matchDetails);
           const currentPlayer = get().players[get().currentPlayerIdx];
           get().incrementPlayerScore(currentPlayer.id);
+          set({ gameState: { isGameOver: true, doesMatchExist: true } });
+          return;
         } else if (numMoves === gridSize ** 2) {
           set({ gameState: { isGameOver: true, doesMatchExist: false } });
+          return;
         } else {
           get().toggleCurrentPlayer();
         }
