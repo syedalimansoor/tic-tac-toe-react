@@ -15,7 +15,7 @@ Welcome! This is a responsive browser-based tic-tac-toe game with support for co
 
 ## Screenshots
 
-<div style="display: flex;">
-<img src="screenshots/start.jpeg" style="flex: 1 0 0;" />
-<img src="screenshots/settings.jpeg" style="flex: 1 0 0;" />
-</div>
+![Start screen](screenshots/start.jpeg)
+![Settings screen](screenshots/settings.jpeg)
+![Game screen](screenshots/game.jpeg)
+![Result screen](screenshots/result.jpeg)
