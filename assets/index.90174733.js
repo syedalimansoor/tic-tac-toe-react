@@ -467,7 +467,7 @@ Error generating stack: `+o.message+`
   font-weight: ${({theme:e})=>e.font.weight.medium};
   border-radius: 99em;
   padding: 0.2em 1.4em;
-`,U2={type:"spring",stiffness:700,damping:30},Um=new Worker("/minimax.js");function B2(){const{currentPlayerIdx:e,players:t}=he(({currentPlayerIdx:a,players:s})=>({currentPlayerIdx:a,players:s})),n=he(a=>a.grid),r=he(a=>a.gridCounters),i=he(a=>a.handleGridCellClick),o=t[e];return T.exports.useEffect(()=>{Um.onmessage=a=>{const{rowIdx:s,colIdx:l}=a.data;i(s,l,"O")}},[]),T.exports.useEffect(()=>{o.type==="ai"&&Um.postMessage([n,r,!0])},[o]),D(z2,{currentPlayerIdx:e,children:D(F2,{layout:!0,transition:U2,children:t[e].name||t[e].mark})})}var W2="/tic-tac-toe-react/assets/x-mark.51747501.svg",G2="/tic-tac-toe-react/assets/o-mark.7f62cf2f.svg";const H2={X:W2,O:G2},Y2=Z.button`
+`,U2={type:"spring",stiffness:700,damping:30},Um=new Worker("/tic-tac-toe-react/minimax.js");function B2(){const{currentPlayerIdx:e,players:t}=he(({currentPlayerIdx:a,players:s})=>({currentPlayerIdx:a,players:s})),n=he(a=>a.grid),r=he(a=>a.gridCounters),i=he(a=>a.handleGridCellClick),o=t[e];return T.exports.useEffect(()=>{Um.onmessage=a=>{const{rowIdx:s,colIdx:l}=a.data;i(s,l,"O")}},[]),T.exports.useEffect(()=>{o.type==="ai"&&Um.postMessage([n,r,!0])},[o]),D(z2,{currentPlayerIdx:e,children:D(F2,{layout:!0,transition:U2,children:t[e].name||t[e].mark})})}var W2="/tic-tac-toe-react/assets/x-mark.51747501.svg",G2="/tic-tac-toe-react/assets/o-mark.7f62cf2f.svg";const H2={X:W2,O:G2},Y2=Z.button`
   background: transparent;
   border: none;
   padding: 0.8em;
@@ -638,4 +638,4 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-`;function VA(){return Ie(IA,{...Qf,children:[D(j2,{}),D(RA,{})]})}function LA(){const e=kf();return D(J0,{children:Ie(rE,{location:e,children:[D(ha,{path:"/",element:D(oT,{})}),D(ha,{path:"/settings",element:D(u2,{})}),D(ha,{path:"/game",element:D(VA,{})})]},e.pathname)})}Hl.createRoot(document.getElementById("root")).render(D(vn.StrictMode,{children:Ie(Ox,{theme:IS,children:[D(oE,{}),D(iE,{children:D(LA,{})})]})}));
+`;function VA(){return Ie(IA,{...Qf,children:[D(j2,{}),D(RA,{})]})}function LA(){const e=kf();return D(J0,{children:Ie(rE,{location:e,children:[D(ha,{path:"/",element:D(oT,{})}),D(ha,{path:"/settings",element:D(u2,{})}),D(ha,{path:"/game",element:D(VA,{})})]},e.pathname)})}Hl.createRoot(document.getElementById("root")).render(D(vn.StrictMode,{children:Ie(Ox,{theme:IS,children:[D(oE,{}),D(iE,{basename:"/tic-tac-toe-react/",children:D(LA,{})})]})}));
