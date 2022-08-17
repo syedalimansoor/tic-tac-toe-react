@@ -35,8 +35,7 @@ const spring: Transition = {
   damping: 30,
 };
 
-const worker: Worker = new Worker("/minimax.js");
-
+const worker: Worker = new Worker(`/tic-tac-toe-react/minimax.js`);
 export default function CurrentPlayer() {
   const { currentPlayerIdx, players } = useStore(
     ({ currentPlayerIdx, players }) => ({
