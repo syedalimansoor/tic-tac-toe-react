@@ -1,6 +1,5 @@
 onmessage = (message) => {
   const result = minimax(...message.data);
-  console.log(result);
   postMessage(result);
 };
 
